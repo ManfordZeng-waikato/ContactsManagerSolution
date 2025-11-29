@@ -29,4 +29,7 @@
     <ProjectReference Include="..\ContactsManager.Core\ContactsManager.Core.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<InternalVisibleTo Include="ContactsManager.IntegrationTests" />
+	</ItemGroup>
 </Project>
