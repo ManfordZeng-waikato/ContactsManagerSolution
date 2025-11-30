@@ -1,13 +1,13 @@
 ﻿using AutoFixture;
-using Entities;
+using ContactsManager.Core.Domain.Entities;
+using ContactsManager.Core.Domain.RepositoryContracts;
+using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts;
+using ContactsManager.Core.Services;
 using FluentAssertions;
 using Moq;
-using RepositoryContract;
-using ServiceContracts;
-using ServiceContracts.DTO;
-using Services;
 
-namespace CRUDTest
+namespace ContactsManager.ServiceTests
 {
     public class CountriesServiceTest
     {

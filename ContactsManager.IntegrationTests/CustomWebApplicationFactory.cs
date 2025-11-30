@@ -1,10 +1,10 @@
-﻿using Entities;
+﻿using ContacsManager.Infrastructure.DatabaseContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CRUDTest
+namespace ContactsManager.IntegrationTests
 {
     public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {

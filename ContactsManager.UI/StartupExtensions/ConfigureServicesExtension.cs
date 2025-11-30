@@ -1,12 +1,12 @@
-﻿using CRUDOperationSystem.Filters.ActionFilters;
-using Entities;
+﻿using ContacsManager.Infrastructure.DatabaseContext;
+using ContacsManager.Infrastructure.Repositories;
+using ContactsManager.Core.Domain.RepositoryContracts;
+using ContactsManager.Core.ServiceContracts;
+using ContactsManager.Core.Services;
+using ContactsManager.UI.Filters.ActionFilters;
 using Microsoft.EntityFrameworkCore;
-using Repository;
-using RepositoryContract;
-using ServiceContracts;
-using Services;
 
-namespace CRUDOperationSystem.StartupExtensions
+namespace ContactsManager.UI.StartupExtensions
 {
     public static class ConfigureServicesExtension
     {

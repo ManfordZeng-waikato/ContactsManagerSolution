@@ -1,7 +1,8 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using ContactsManager.Core.Domain.Entities;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-namespace Entities
+namespace ContacsManager.Infrastructure.DatabaseContext
 {
     public class ApplicationDbContext : DbContext
     {
@@ -17,7 +18,7 @@ namespace Entities
             modelBuilder.Entity<Person>().ToTable("Persons");
 
             //Seed to Db
-            string countriesJson = System.IO.File.ReadAllText("countries.json");
+            string countriesJson = File.ReadAllText("countries.json");
             List<Country> countries =
             System.Text.Json.JsonSerializer.Deserialize<List<Country>>(countriesJson);
 
@@ -27,7 +28,7 @@ namespace Entities
             }
 
 
-            string personsJson = System.IO.File.ReadAllText("persons.json");
+            string personsJson = File.ReadAllText("persons.json");
             List<Person> persons =
             System.Text.Json.JsonSerializer.Deserialize<List<Person>>(personsJson);
 

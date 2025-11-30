@@ -3,7 +3,7 @@ using FluentAssertions;
 using HtmlAgilityPack;
 using System.Net;
 
-namespace CRUDTest
+namespace ContactsManager.IntegrationTests
 {
     public class PersonsControllerIntegrationTest : IClassFixture<CustomWebApplicationFactory>
     {

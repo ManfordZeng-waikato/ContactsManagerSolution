@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ServiceContracts;
+﻿using ContactsManager.Core.ServiceContracts;
+using Microsoft.AspNetCore.Mvc;
 
-namespace CRUDOperationSystem.Controllers
+namespace ContactsManager.UI.Controllers
 {
     [Route("[controller]")]
     public class CountriesController : Controller

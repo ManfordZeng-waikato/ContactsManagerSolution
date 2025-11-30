@@ -1,10 +1,10 @@
-﻿using Entities;
+﻿using ContactsManager.Core.Domain.Entities;
+using ContactsManager.Core.Domain.RepositoryContracts;
+using ContactsManager.Core.ServiceContracts;
 using Microsoft.Extensions.Logging;
-using RepositoryContract;
 using Serilog;
-using ServiceContracts;
 
-namespace Services
+namespace ContactsManager.Core.Services
 {
     public class PersonsDeleterService : IPersonsDeleterService
     {

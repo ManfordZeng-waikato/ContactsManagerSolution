@@ -1,9 +1,9 @@
-﻿using CRUDOperationSystem.Controllers;
+﻿using ContactsManager.Core.DTO;
+using ContactsManager.Core.Enums;
+using ContactsManager.UI.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
-using ServiceContracts.DTO;
-using ServiceContracts.Enums;
 
-namespace CRUDOperationSystem.Filters.ActionFilters
+namespace ContactsManager.UI.Filters.ActionFilters
 {
     public class PersonsListActionFilter : IActionFilter
     {

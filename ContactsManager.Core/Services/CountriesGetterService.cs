@@ -1,9 +1,9 @@
-﻿using Entities;
-using RepositoryContract;
-using ServiceContracts;
-using ServiceContracts.DTO;
+﻿using ContactsManager.Core.Domain.Entities;
+using ContactsManager.Core.Domain.RepositoryContracts;
+using ContactsManager.Core.DTO;
+using ContactsManager.Core.ServiceContracts;
 
-namespace Services
+namespace ContactsManager.Core.Services
 {
     public class CountriesGetterService : ICountriesGetterService
     {

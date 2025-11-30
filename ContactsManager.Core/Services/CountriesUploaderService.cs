@@ -1,9 +1,9 @@
-﻿using Entities;
+﻿using ContactsManager.Core.Domain.Entities;
+using ContactsManager.Core.Domain.RepositoryContracts;
+using ContactsManager.Core.ServiceContracts;
 using OfficeOpenXml;
-using RepositoryContract;
-using ServiceContracts;
 
-namespace Services
+namespace ContactsManager.Core.Services
 {
     /// <summary>
     /// Service for importing countries from an Excel file.

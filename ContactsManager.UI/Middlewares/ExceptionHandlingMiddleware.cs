@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace CRUDOperationSystem.Middlewares
+namespace ContactsManager.UI.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class ExceptionHandlingMiddleware

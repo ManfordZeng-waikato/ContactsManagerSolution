@@ -1,6 +1,6 @@
-﻿using ServiceContracts.DTO;
+﻿using ContactsManager.Core.DTO;
 
-namespace ServiceContracts
+namespace ContactsManager.Core.ServiceContracts
 {
     /// <summary>
     /// Represents business logic for manipulating Country entity

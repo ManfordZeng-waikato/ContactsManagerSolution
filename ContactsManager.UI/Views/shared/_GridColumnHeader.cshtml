@@ -1,4 +1,5 @@
-﻿@if (ViewBag.CurrentSortBy == ViewBag.ColumnName && ViewBag.CurrentSortOrder == SortOrderOptions.ASC.ToString())
+﻿@using ContactsManager.Core.Enums
+@if (ViewBag.CurrentSortBy == ViewBag.ColumnName && ViewBag.CurrentSortOrder == SortOrderOptions.ASC.ToString())
 {
     <th>
         <a asp-controller="Persons" asp-action="Index"

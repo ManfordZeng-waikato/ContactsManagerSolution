@@ -1,14 +1,14 @@
 ﻿using AutoFixture;
-using CRUDOperationSystem.Controllers;
+using ContactsManager.Core.DTO;
+using ContactsManager.Core.Enums;
+using ContactsManager.Core.ServiceContracts;
+using ContactsManager.UI.Controllers;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using ServiceContracts;
-using ServiceContracts.DTO;
-using ServiceContracts.Enums;
 
-namespace CRUDTest
+namespace ContactsManager.ControllerTests
 {
     public class PersonsControllerTest
     {

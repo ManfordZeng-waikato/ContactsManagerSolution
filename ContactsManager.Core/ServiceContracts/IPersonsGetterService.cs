@@ -1,11 +1,10 @@
-﻿using ServiceContracts.DTO;
-using ServiceContracts.Enums;
+﻿using ContactsManager.Core.DTO;
 
-namespace ServiceContracts
+namespace ContactsManager.Core.ServiceContracts
 {
     public interface IPersonsGetterService
     {
-        
+
         Task<List<PersonResponse>> GetAllPersons();
         Task<PersonResponse?> GetPersonByPersonID(Guid? personID);
 

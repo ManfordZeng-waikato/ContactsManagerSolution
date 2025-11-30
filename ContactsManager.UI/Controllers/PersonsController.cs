@@ -1,16 +1,16 @@
-﻿using CRUDOperationSystem.Filters;
-using CRUDOperationSystem.Filters.ActionFilters;
-using CRUDOperationSystem.Filters.AuthorizationFilters;
-using CRUDOperationSystem.Filters.ExceptionFilters;
-using CRUDOperationSystem.Filters.ResultFilters;
+﻿using ContactsManager.Core.DTO;
+using ContactsManager.Core.Enums;
+using ContactsManager.Core.ServiceContracts;
+using ContactsManager.UI.Filters;
+using ContactsManager.UI.Filters.ActionFilters;
+using ContactsManager.UI.Filters.AuthorizationFilters;
+using ContactsManager.UI.Filters.ExceptionFilters;
+using ContactsManager.UI.Filters.ResultFilters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rotativa.AspNetCore;
-using ServiceContracts;
-using ServiceContracts.DTO;
-using ServiceContracts.Enums;
 
-namespace CRUDOperationSystem.Controllers
+namespace ContactsManager.UI.Controllers
 {
     [Route("[controller]")]
     /*  [TypeFilter(typeof(ResponseHeaderActionFilter), Arguments = new object[] { "My-Key-From-Controller", "My-Value-From-Controller", 3 }, Order = 3)]*/

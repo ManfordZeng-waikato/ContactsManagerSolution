@@ -1,5 +1,5 @@
-using CRUDOperationSystem.Middlewares;
-using CRUDOperationSystem.StartupExtensions;
+using ContactsManager.UI.Middlewares;
+using ContactsManager.UI.StartupExtensions;
 using OfficeOpenXml;
 using Serilog;
 

@@ -1,18 +1,18 @@
 ﻿using AutoFixture;
-using Entities;
+using ContactsManager.Core.Domain.Entities;
+using ContactsManager.Core.Domain.RepositoryContracts;
+using ContactsManager.Core.DTO;
+using ContactsManager.Core.Enums;
+using ContactsManager.Core.ServiceContracts;
+using ContactsManager.Core.Services;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Moq;
-using RepositoryContract;
 using Serilog;
-using ServiceContracts;
-using ServiceContracts.DTO;
-using ServiceContracts.Enums;
-using Services;
 using System.Linq.Expressions;
 using Xunit.Abstractions;
 
-namespace CRUDTest
+namespace ContactsManager.ServiceTests
 {
     public class PersonsServiceTest
     {
@@ -172,7 +172,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Expected:");
             foreach (PersonResponse person_response_from_add in personResponsesFromAdd)
             {
-                _testOutputHelper.WriteLine((person_response_from_add).ToString());
+                _testOutputHelper.WriteLine(person_response_from_add.ToString());
             }
 
             _personRepositoryMock.Setup(temp => temp.GetAllPersons())
@@ -185,7 +185,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Actual:");
             foreach (PersonResponse person_response_from_get in persons_list_from_get)
             {
-                _testOutputHelper.WriteLine((person_response_from_get).ToString());
+                _testOutputHelper.WriteLine(person_response_from_get.ToString());
             }
 
             /*foreach (PersonResponse person_response_from_add in personResponsesFromAdd)
@@ -221,7 +221,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Expected:");
             foreach (PersonResponse person_response_from_add in personResponsesExpected)
             {
-                _testOutputHelper.WriteLine((person_response_from_add).ToString());
+                _testOutputHelper.WriteLine(person_response_from_add.ToString());
             }
 
             _personRepositoryMock
@@ -239,7 +239,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Actual:");
             foreach (PersonResponse person_response_from_get in persons_list_from_search)
             {
-                _testOutputHelper.WriteLine((person_response_from_get).ToString());
+                _testOutputHelper.WriteLine(person_response_from_get.ToString());
             }
 
             /*    foreach (PersonResponse person_response_from_add in personResponsesFromAdd)
@@ -274,7 +274,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Expected:");
             foreach (PersonResponse person_response_from_add in personResponsesExpected)
             {
-                _testOutputHelper.WriteLine((person_response_from_add).ToString());
+                _testOutputHelper.WriteLine(person_response_from_add.ToString());
             }
 
             _personRepositoryMock
@@ -292,7 +292,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Actual:");
             foreach (PersonResponse person_response_from_get in persons_list_from_search)
             {
-                _testOutputHelper.WriteLine((person_response_from_get).ToString());
+                _testOutputHelper.WriteLine(person_response_from_get.ToString());
             }
 
             /*    foreach (PersonResponse person_response_from_add in personResponsesFromAdd)
@@ -334,7 +334,7 @@ namespace CRUDTest
 
             foreach (PersonResponse person_response_from_add in personResponsesExpected)
             {
-                _testOutputHelper.WriteLine((person_response_from_add).ToString());
+                _testOutputHelper.WriteLine(person_response_from_add.ToString());
             }
 
             List<PersonResponse> allpersons = await _personsGetterService.GetAllPersons();
@@ -346,7 +346,7 @@ namespace CRUDTest
             _testOutputHelper.WriteLine("Actual:");
             foreach (PersonResponse person_response_from_sort in persons_list_from_sort)
             {
-                _testOutputHelper.WriteLine((person_response_from_sort).ToString());
+                _testOutputHelper.WriteLine(person_response_from_sort.ToString());
             }
 
 

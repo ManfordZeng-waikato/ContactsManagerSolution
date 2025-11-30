@@ -1,7 +1,7 @@
-﻿using Entities;
-using ServiceContracts.Enums;
+﻿using ContactsManager.Core.Domain.Entities;
+using ContactsManager.Core.Enums;
 
-namespace ServiceContracts.DTO
+namespace ContactsManager.Core.DTO
 {
     public class PersonResponse
     {
@@ -21,7 +21,7 @@ namespace ServiceContracts.DTO
         {
             get; set;
         }
-        public String? Gender
+        public string? Gender
         {
             get; set;
         }
@@ -117,7 +117,7 @@ namespace ServiceContracts.DTO
                 PersonID = person.PersonID,
                 ReceiveNewsLetters = person.ReceiveNewsLetters,
                 Gender = person.Gender,
-                Age = (person.DateOfBirth != null) ?
+                Age = person.DateOfBirth != null ?
                 Math.Round((DateTime.Now - person.DateOfBirth.Value)
                .TotalDays / 365.25) : null,
                 Country = person.Country?.CountryName

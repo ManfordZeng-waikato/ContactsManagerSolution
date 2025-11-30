@@ -1,4 +1,4 @@
-﻿namespace ServiceContracts
+﻿namespace ContactsManager.Core.ServiceContracts
 {
     public interface IPersonsDeleterService
     {

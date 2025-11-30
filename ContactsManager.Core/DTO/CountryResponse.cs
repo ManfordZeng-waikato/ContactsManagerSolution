@@ -1,6 +1,6 @@
-﻿using Entities;
+﻿using ContactsManager.Core.Domain.Entities;
 
-namespace ServiceContracts.DTO
+namespace ContactsManager.Core.DTO
 {
     /// <summary>
     /// DTO class that is used as return type for most of 
@@ -13,11 +13,13 @@ namespace ServiceContracts.DTO
 
         public override bool Equals(object? obj)
         {
-            if (obj == null) return false;
-            if (obj.GetType() != typeof(CountryResponse)) return false;
+            if (obj == null)
+                return false;
+            if (obj.GetType() != typeof(CountryResponse))
+                return false;
             CountryResponse country_to_compare = (CountryResponse)obj;
-            return this.CountryID == country_to_compare.CountryID
-                && this.CountryName == country_to_compare.CountryName;
+            return CountryID == country_to_compare.CountryID
+                && CountryName == country_to_compare.CountryName;
         }
 
         public override int GetHashCode()
