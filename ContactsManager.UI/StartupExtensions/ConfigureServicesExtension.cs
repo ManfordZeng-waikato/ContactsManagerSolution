@@ -1,9 +1,12 @@
 ﻿using ContacsManager.Infrastructure.DatabaseContext;
 using ContacsManager.Infrastructure.Repositories;
+using ContactsManager.Core.Domain.IdentityEntities;
 using ContactsManager.Core.Domain.RepositoryContracts;
 using ContactsManager.Core.ServiceContracts;
 using ContactsManager.Core.Services;
 using ContactsManager.UI.Filters.ActionFilters;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContactsManager.UI.StartupExtensions
@@ -52,6 +55,12 @@ namespace ContactsManager.UI.StartupExtensions
                 });
             }
             services.AddScoped<ResponseHeaderActionFilter>();
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders()
+                .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
+                .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
             return services;
 
