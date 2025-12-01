@@ -39,13 +39,14 @@
                                 else
                                 {
                                     <li>
-                                        <a asp-controller="Account" asp-action="Register">
+                                        <a asp-controller="Account" asp-action="Register"
+                                           class="@(ViewBag.CurrentUrl == "~/Account/Register" ? "nav-active" : "")">
                                             Register
                                         </a>
                                     </li>
-
                                     <li>
-                                        <a asp-controller="Account" asp-action="Login">
+                                        <a asp-controller="Account" asp-action="Login"
+                                           class="@(ViewBag.CurrentUrl == "~/Account/Login" ? "nav-active" : "")">
                                             Login
                                         </a>
                                     </li>
@@ -60,10 +61,17 @@
 
                 <ul>
                     <li>
-                        <a asp-controller="Persons" asp-action="Index" style="font-size: 24px; font-weight: bold;">
+                        <a asp-controller="Persons" asp-action="Index"
+                           style="font-size: 24px; font-weight: bold;"
+                           class="@(ViewBag.CurrentUrl == "~/Persons/Index" ? "nav-active" : "")">
                             Persons
                         </a>
-                        <a asp-controller="Countries" asp-action="UploadFromExcel" style="font-size: 24px; font-weight: bold;">
+                    </li>
+
+                    <li>
+                        <a asp-controller="Countries" asp-action="UploadFromExcel"
+                           style="font-size: 24px; font-weight: bold;"
+                           class="@(ViewBag.CurrentUrl == "~/Countries/UploadFromExcel" ? "nav-active" : "")">
                             Upload Countries
                         </a>
                     </li>
