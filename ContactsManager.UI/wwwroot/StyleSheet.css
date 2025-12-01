@@ -1,4 +1,54 @@
-﻿body {
+﻿
+.password-rules {
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+
+    /* 去掉默认圆点和缩进 */
+    .password-rules ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    /* 每一条规则的整体布局 */
+    .password-rules .rule-item {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* 图标与文字间距 */
+        margin-bottom: 4px;
+    }
+
+        /* 默认失败状态：红色图标 + 深一点文字 */
+        .password-rules .rule-item.rule-fail .rule-icon {
+            color: #e03131;
+        }
+
+        .password-rules .rule-item.rule-fail .rule-text {
+            color: #b02a37;
+        }
+
+        /* 通过状态：绿色图标 + 正常文字颜色 */
+        .password-rules .rule-item.rule-pass .rule-icon {
+            color: #2f9e44;
+        }
+
+        .password-rules .rule-item.rule-pass .rule-text {
+            color: #333;
+        }
+
+    /* 让图标稍微小一点，别太抢眼 */
+    .password-rules .rule-icon {
+        font-size: 0.9rem;
+    }
+
+/* 整体稍微缩进一点，让规则看起来从 Password 输入框下缩排出来 */
+.password-rules {
+    padding-left: 4px;
+}
+
+
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     background-color: #f7f7f7;

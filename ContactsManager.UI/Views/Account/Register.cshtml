@@ -48,6 +48,32 @@
             </div>
         </div>
 
+        @* Feedback for Password *@
+        <div id="password-rules" class="password-rules">
+            <ul>
+                <li id="rule-length" class="rule-item rule-fail">
+                    <span class="rule-icon">✖</span>
+                    <span class="rule-text">At least 8 characters</span>
+                </li>
+                <li id="rule-lower" class="rule-item rule-fail">
+                    <span class="rule-icon">✖</span>
+                    <span class="rule-text">At least 1 lowercase letter</span>
+                </li>
+                <li id="rule-upper" class="rule-item rule-fail">
+                    <span class="rule-icon">✖</span>
+                    <span class="rule-text">At least 1 uppercase letter</span>
+                </li>
+                <li id="rule-digit" class="rule-item rule-fail">
+                    <span class="rule-icon">✖</span>
+                    <span class="rule-text">At least 1 number</span>
+                </li>
+                <li id="rule-special" class="rule-item rule-fail">
+                    <span class="rule-icon">✖</span>
+                    <span class="rule-text">At least 1 special character</span>
+                </li>
+            </ul>
+        </div>
+
         @* Confirm Password *@
         <div class="form-field flex">
             <div class="w-25">
@@ -89,7 +115,6 @@
                 }
             </div>
         </div>
-
     </form>
 </div>
 
@@ -101,5 +126,36 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobtrusive" asp-fallback-src="~/jquery.validate.unobtrusive.min.js">
+    </script>
+
+
+    <script>
+        const pwdInput = document.querySelector("input[name='Password']");
+
+        pwdInput.addEventListener("input", function () {
+            const pwd = pwdInput.value;
+
+            updateRule("rule-length", pwd.length >= 8);
+            updateRule("rule-lower", /[a-z]/.test(pwd));
+            updateRule("rule-upper", /[A-Z]/.test(pwd));
+            updateRule("rule-digit", /\d/.test(pwd));
+            updateRule("rule-special", /[^A-Za-z0-9]/.test(pwd));
+        });
+
+                function updateRule(id, isValid) {
+            const item = document.getElementById(id);
+            const icon = item.querySelector(".rule-icon");
+
+            if (isValid) {
+                item.classList.remove("rule-fail");
+                item.classList.add("rule-pass");
+                icon.textContent = "✔";
+            } else {
+                item.classList.remove("rule-pass");
+                item.classList.add("rule-fail");
+                icon.textContent = "✖";
+            }
+        }
+
     </script>
 }
