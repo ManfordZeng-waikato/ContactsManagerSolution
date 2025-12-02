@@ -5,6 +5,7 @@ using ContactsManager.Core.Domain.RepositoryContracts;
 using ContactsManager.Core.ServiceContracts;
 using ContactsManager.Core.Services;
 using ContactsManager.UI.Filters.ActionFilters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,9 @@ namespace ContactsManager.UI.StartupExtensions
 
             services.AddScoped<ICountriesRepository, CountriesRepository>();
             services.AddScoped<IPersonsRepository, PersonsRepository>();
+
+            services.AddScoped<ResponseHeaderActionFilter>();
+
             if (!env.IsEnvironment("Test"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
@@ -54,7 +58,6 @@ namespace ContactsManager.UI.StartupExtensions
                         configuration.GetConnectionString("DefaultConnection")!);
                 });
             }
-            services.AddScoped<ResponseHeaderActionFilter>();
 
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
@@ -72,8 +75,21 @@ namespace ContactsManager.UI.StartupExtensions
                 .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
                 .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
-            return services;
+            services.AddAuthorization(options =>
+            {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
+
+            return services;
         }
     }
 }
