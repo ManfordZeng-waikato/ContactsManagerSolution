@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContactsManager.Core.DTO
 {
@@ -9,6 +10,7 @@ namespace ContactsManager.Core.DTO
 
         [Required(ErrorMessage = "Email cant't be blank")]
         [EmailAddress(ErrorMessage = "Email should be in a proper email address format")]
+        [Remote(action: "IsEmailAlreadyRegisterd", controller: "Account", ErrorMessage = "Email is already used")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Phone number cant't be blank")]
