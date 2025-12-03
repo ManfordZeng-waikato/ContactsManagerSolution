@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContactsManager.UI.Controllers
 {
     [Route("[controller]/[action]")]
-    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -23,12 +22,14 @@ namespace ContactsManager.UI.Controllers
         }
 
         [HttpGet]
+        [Authorize("NotAuthorized")]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize("NotAuthorized")]
         public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
             if (!ModelState.IsValid)
@@ -80,6 +81,7 @@ namespace ContactsManager.UI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -87,12 +89,14 @@ namespace ContactsManager.UI.Controllers
         }
 
         [HttpGet]
+        [Authorize("NotAuthorized")]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize("NotAuthorized")]
         public async Task<IActionResult> Login(LoginDTO loginDTO, string? returnUrl)
         {
             if (!ModelState.IsValid)
@@ -105,6 +109,14 @@ namespace ContactsManager.UI.Controllers
             {
                 ModelState.AddModelError("Login", "Invalid email or password.");
                 return View(loginDTO);
+            }
+            ApplicationUser applicationUser = await _userManager.FindByEmailAsync(loginDTO.Email);
+            if (applicationUser != null)
+            {
+                if (await _userManager.IsInRoleAsync(applicationUser, UserTypeOptions.Admin.ToString()))
+                {
+                    return RedirectToAction("Index", "Home", new { area = "Admin" });
+                }
             }
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
             {
