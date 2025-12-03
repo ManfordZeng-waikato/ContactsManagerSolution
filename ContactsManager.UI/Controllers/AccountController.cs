@@ -1,5 +1,6 @@
 ﻿using ContactsManager.Core.Domain.IdentityEntities;
 using ContactsManager.Core.DTO;
+using ContactsManager.Core.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +13,13 @@ namespace ContactsManager.UI.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -52,6 +55,25 @@ namespace ContactsManager.UI.Controllers
             }
             else
             {
+                if (registerDTO.UserType == UserTypeOptions.Admin)
+                {
+                    if (await _roleManager.FindByNameAsync(UserTypeOptions.Admin.ToString()) is null)
+                    {
+                        ApplicationRole applicationRole = new()
+                        {
+                            Name = UserTypeOptions.Admin.ToString()
+                        };
+                        await _roleManager.CreateAsync(applicationRole);
+
+                        await _userManager.AddToRoleAsync(applicationUser, UserTypeOptions.Admin.ToString());
+                    }
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(applicationUser, UserTypeOptions.User.ToString());
+
+                }
+
                 await _signInManager.SignInAsync(applicationUser, isPersistent: false);
                 return RedirectToAction(nameof(PersonsController.Index), "Persons");
             }
