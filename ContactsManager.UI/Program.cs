@@ -28,6 +28,9 @@ else
     app.UseExceptionHandlingMiddleware();
 }
 
+app.UseHsts();
+app.UseHttpsRedirection();
+
 app.UseSerilogRequestLogging();
 
 if (builder.Environment.IsEnvironment("Test") == false)
