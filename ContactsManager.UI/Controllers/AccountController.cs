@@ -71,8 +71,16 @@ namespace ContactsManager.UI.Controllers
                 }
                 else
                 {
-                    await _userManager.AddToRoleAsync(applicationUser, UserTypeOptions.User.ToString());
+                    if (await _roleManager.FindByNameAsync(UserTypeOptions.User.ToString()) is null)
+                    {
+                        ApplicationRole applicationRole = new()
+                        {
+                            Name = UserTypeOptions.User.ToString()
+                        };
+                        await _roleManager.CreateAsync(applicationRole);
 
+                        await _userManager.AddToRoleAsync(applicationUser, UserTypeOptions.User.ToString());
+                    }
                 }
 
                 await _signInManager.SignInAsync(applicationUser, isPersistent: false);
@@ -125,6 +133,7 @@ namespace ContactsManager.UI.Controllers
             return RedirectToAction(nameof(PersonsController.Index), "Persons");
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> IsEmailAlreadyRegisterd(string email)
         {
             ApplicationUser application = await _userManager.FindByEmailAsync(email);

@@ -8,6 +8,7 @@ using ContactsManager.UI.Filters.ActionFilters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContactsManager.UI.StartupExtensions
@@ -31,6 +32,8 @@ namespace ContactsManager.UI.StartupExtensions
                 //options.Filters.Add<ResponseHeaderActionFilter>(5);
 
                 options.Filters.Add(new ResponseHeaderFilterFactoryAttribute("My-Key-From-Global", "My-Value-From-Global", 2));
+
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             });
 
             //add services into IOC container 
