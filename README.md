@@ -55,6 +55,7 @@ ContactsManagerSolution.sln
 └── .github
     └── (optional) CI configuration
 
+```
 
 ## Core Features
 
